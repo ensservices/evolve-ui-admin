@@ -1,37 +1,38 @@
 import { Button } from "@mui/material";
 import Router, { useRouter } from 'next/router';
 import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+// import Courses from './courses';
 
 
 
 
 const Courses = () => {
-  const [courseList, setCourseList] = useState();
+  const [courseList, setCourseList] = useState([]);
+  
   // const token = JSON.parse(localStorage.getItem("token"));
 
-  const fetchCourseList =  async () => {
+
+  const fetchCourseList = async () => {
     try {
+      
       const options = {
         method: 'get',
-        url: "https://api.evolveias.com/user/get_courses",
+        url: `https://api.evolveias.com/user/get_courses`,
         headers: {
-          Authorization: id,
+          Authorization: "iIYSmv6I2i092mjw7OA66ufXmipzxXpv2NBL16WgSJ3apoOJ31qO7Ou29cqj",
         }
       };
-      const courseListData = await axios(options);
-      console.log()
-      setCourseList(courseListData?.data)
-
-    }
-    catch (error) {
+      const Data = await axios(options);
+      console.log("courselistdata",Data.data.courses[0].name)
+      setCourseList(Data?.data?.courses);
+      
+    } catch (error) {
+     
       console.log(error)
     }
   }
-  const viewCourseDetails = (CourseId) => {
-    const getCurrentCourse = courseList.filter(item => item.course_id == CourseId);
-    localStorage.setItem("cousedetails", JSON.stringify(getCurrentCourse));
-    window.location = "/courses"
-  }
+  
   useEffect(() => {
     fetchCourseList();
   }, []);
@@ -44,129 +45,94 @@ const Courses = () => {
 
 
   }
-  const handleDelete = () => {
-    alert("delete record")
+  const handleDelete = (id) => {
+    alert(id)
+    // fetch(`https://api.evolveias.com/user/get_courses/${id}`,{
+    //   method :"DELETE"
+    // }).then((result)=>{
+    //   result.json().then((resp)=>{
+    //     console.log("ressp+++++++========>",resp)
+    //   })
+    // })
+    
 
   }
 
   return (
-    <div className="row">
-      <div className="col-md-12 pl-4 pr-4 pt-2">
+    <>
+    
+            <h1 className="text-danger">
+              <b>
+                COURSES
+                </b>
+            </h1>
+    <div className="row mt-4">
+      <div className="col-md-12  mt-4 pl-4 pr-4 pt-2">
         <div className="card shadow mb-4">
 
-          <div className="card-header py-3 d-flex justify-content-between">
-            <h1>
-              Courses
-            </h1>
-            {/* {/* <div className="d-grid">
-                  {
-                    !isApprove &&
-                    <div className="px-4 pt-2 alert-danger" role="alert">
-                      {/* <i className="bi bi-x font-weight-bold" style={{ marginRight: "10px", fontSize: "22px", cursor: "pointer" }}
-                      onClick={() => setShowWarning(false)}>
-                    </i> */}
-            {/* <Link to='/profile' className="px-10 pt-3 alert-danger text-decoration-none justify-content-center d-flex p-4">Please update your profile to sync products with ONDC</Link> */}
-            {/* </div> */}
+          <div className="card-header py-3 d-flex justify-content-between  text-danger">
+            
 
-            {/* //   <br />
-                //   <button disabled={isApprove ? '' : 'disabled'} className="btn btn-primary" style={{ marginLeft: "auto", width: "250px" }} onClick={() => postAllProducts()} */}
-            {/* //   >Sync Products with ONDC</button> */}
-            {/* // </div> */}
+            
           </div>
+          <div className="table-responsive">
           <table
             className="table table-bordered "
             id="dataTable"
             width="100%"
           >
             <thead>
-              <tr>
+              <tr className="text-danger ">
+              <th >S.No</th>
                 <th >ID</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Course Validation</th>
+                <th >Name</th>
+                <th >Amount</th>
+                <th >Course Validation</th>
                 <th >Settings</th>
-                <th>Remove</th>
+                <th > Remove</th>
               </tr>
             </thead>
             <tbody>
               {courseList &&
-                courseList.map((_data, _index) => {
-                  return (
+                courseList.map((item,index) => {
+                  return(
 
-                    <tr  key={_index}> 
-                      
-                       {/* <td >12</td>
-                      <td>Prabhakar</td>
-                      <td>2300/-</td>
-                      <td>60</td>  */}
-                       <td >{_index+1}</td>
-                      <td>{_data?.name}</td>
-                      <td>{_data?.ammount}</td>
-                      <td>{_data?.coursevalidation}</td> 
+                    <tr  key={index}> 
+                    <td>{index+1}</td>
+                     <td>{item?.id}</td>
+                      <td>{item?.name}</td>
+                      <td>{item?.ammount}</td>
+                      <td>{item?.coursevalidation}</td> 
 
                       <td>
                         <Button variant="outlined" color="success" text="" onClick={contentUpload}>Settings</Button>
                       </td>
                       <td>
                         {/* <button className="btn btn-dander">Disable</button> */}
-                        <Button variant="outlined" onClick={handleDelete}>Delete</Button>
+                        <Button variant="outlined" color="error" onClick={()=>handleDelete(item.id)}>Delete</Button>
 
                       </td>
 
                     </tr>
+                  )
 
 
-                  );
                 })
 
               }
 
-              {/* {
-                        productList &&
-                        productList
-                          .filter((value) => {
-                            if (searchVal === "") {
-                              return value;
-                            }
-                            else {
-                              if (value.name.toLowerCase().includes(searchVal.toLowerCase())) {
-                                return value;
-                              }
-                            }
-                          }) */}
-              {/* .map((item, index) => (
-                            <tr >
-                              <td> {index + 1} </td>
-                              <td> */}
-              {/* <div className="row">
-                                  <div className="col-md-12">
-                                    <img
-                                      src={item?.image}
-                                      alt="ok"
-                                      height={80}
-                                      width={80}
-                                    />
-                                  </div>
-                                </div> */}
-              {/* </td>
-                            //   <td> {item?.name} </td>
-                            //   <td>{item?.min_price}</td>
-                            //   <td>{item?.sku}</td>
-                            //   <td> {item?.status ? 'true' : 'false'}</td>
-                            //   <td className="d-flex justify-content-center gap-3">
-                            //     <button className="btn btn-primary" onClick={() => onProductUpdate(item)}>Edit</button>
-                            //     <button className={`btn ${item.status ? 'btn-danger' : 'btn-secondary'}`} id="btnDelete" onClick={() => handleProductDelete(item)} disabled={!item.status ? true : false}>Disable</button>
-                            //   </td>
-                            // </tr>
-                          ))} */}
+              
             </tbody>
           </table>
+          </div>
 
         </div>
       </div>
     </div>
+    </>
 
 
   )
 }
+
 export default Courses;

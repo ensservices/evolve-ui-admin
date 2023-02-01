@@ -6,8 +6,8 @@ import { useRef } from 'react'
 import JoditEditor from 'jodit-react';
 
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
-const currentAffairs = () => {
-    const editor = useRef(null);
+const Currentaffairs = () => {
+    const Editor = useRef(null);
     const [content, setContent] = useState('');
     const [date, setDate] = useState();
     // const [companyName, setCompanyName] = useState("")
@@ -48,7 +48,7 @@ const currentAffairs = () => {
     return (
         <div className=' panel panel-default'>
             <div className="panel-heading widget-header bordered-bottom bordered-themesecondary">
-                <p className='panel-tittle text-red mt-4' ><h1> Daily Current Affairs</h1></p>
+                <p className='panel-tittle text-danger  mt-4' ><h1> <b>Daily Current Affairs </b></h1></p>
 
             </div>
             <div className='panel-body'>
@@ -56,11 +56,11 @@ const currentAffairs = () => {
                     <div className='control-group'>
                         <div className="col-md-6">
                             <div className="form-group ">
-                                <label className="control-label"><b>Squence Number</b></label>
+                                <label className="control-label text-danger mt-4"><b>Squence Number</b></label>
                                 <input
 
                                     type="number"
-                                    className="form-control text-muted"
+                                    className="form-control  text-muted"
                                     name="CourseBundle"
                                     placeholder="Sr.no" />
                             </div>
@@ -68,7 +68,7 @@ const currentAffairs = () => {
 
                         <div className="col-md-6 mt-4">
                             <div className="form-group ">
-                                <label className="control-label"><b>Tittle</b></label>
+                                <label className="control-label text-danger"><b>Tittle</b></label>
                                 <input
 
                                     type="text"
@@ -78,18 +78,18 @@ const currentAffairs = () => {
                             </div>
                         </div>
                         <div className='controls mt-4 '>
-                            <label className='control-label' for='CourseBundleSquence_no'><b>Description</b></label>
+                            <label className='control-label text-danger' for='CourseBundleSquence_no'><b>Description</b></label>
                             <JoditEditor
                                
                                
-                                ref={editor}
+                                ref={Editor}
                                 value={content}
                                 onChange={newContent => setContent(newContent)} />
 
                         </div>
                         <div className="col-md-6 mt-4">
                             <div className="form-group ">
-                                <label className="control-label"><b>Date</b></label>
+                                <label className="control-label text-danger"><b>Date</b></label>
                                 <input
 
                                     type="date"
@@ -124,4 +124,4 @@ const currentAffairs = () => {
     )
 }
 
-export default currentAffairs
+export default Currentaffairs

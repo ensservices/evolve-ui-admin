@@ -2,6 +2,10 @@ import { forwardRef } from "react";
 import Link from "next/link";
 import { HomeIcon, CreditCardIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
+import {
+  
+  ChevronDownIcon
+} from "@heroicons/react/24/solid";
 
 const SideBar = forwardRef(({ showNav }, ref) => {
   const router = useRouter();
@@ -19,13 +23,12 @@ const SideBar = forwardRef(({ showNav }, ref) => {
       </div>
 
       <div className="flex flex-col">
-        <Link href="/login">
+        <Link   className="text-decoration-none" href="/home">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-100 hover:bg-orange-100 hover:text-orange-500"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/"
+                ? "bg-orange-100 text-red-500"
+                : "text-gray-100 hover:bg-light-100 hover:text-red-500"
+              }`}
           >
             <div className="mr-2 ">
               <HomeIcon className="h-5 w-5 mb-3" />
@@ -35,29 +38,28 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link href="/user">
+        <Link  className="text-decoration-none" href="/user">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/account"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-100 hover:bg-orange-100 hover:text-orange-500"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/account"
+                ? "bg-orange-100 text-red-500"
+                : "text-gray-100 hover:bg-light-100 hover:text-red-500"
+              }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5 mb-3" />
             </div>
-            <div>
+            <div >
               <p>User</p>
+              {/* <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" /> */}
             </div>
           </div>
         </Link>
-        <Link href="/courses">
+        <Link   className="text-decoration-none" href="/courses">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-100 hover:bg-orange-100 hover:text-orange-500"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+                ? "bg-orange-100 text-red-500"
+                : "text-gray-100 hover:bg-light-100 hover:text-red-500"
+              }`}
           >
             <div className="mr-2">
               <CreditCardIcon className="h-5 w-5 mb-3" />

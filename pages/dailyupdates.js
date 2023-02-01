@@ -61,20 +61,21 @@ const DailyUpdates = () => {
         <div className="card shadow mb-4">
 
           <div className="card-header py-3 d-flex justify-content-between">
-            <h1>
-              Current Affairs
+            <h1 className="text-danger">
+              <b>CURRENT AFFAIRS</b>
             </h1>
             
 
             
           </div>
+          <div className="table-responsive">
           <table
             className="table table-bordered "
             id="dataTable"
             width="100%"
           >
             <thead>
-              <tr>
+              <tr className="text-danger">
                 <th >S.No</th>
                 <th>Content Name</th>
                 <th>New</th>
@@ -116,6 +117,7 @@ const DailyUpdates = () => {
               
             </tbody>
           </table>
+          </div>
 
         </div>
       </div>

@@ -136,9 +136,12 @@ const Home = () => {
       {/* <div className="row mt-4"> */}
       {/* <div className="col-md-12  mt-4 pl-4 pr-4 pt-2"> */}
       {/* <div className="card shadow mb-4"> */}
-      <div className="card-header py-3 d-flex justify-content-between">
+      <div className="card-header py-3 d-flex justify-content-between text-danger">
         <h1>
-          Add user
+          <b>
+          ADD USER
+
+          </b>
         </h1>
 
 
@@ -153,18 +156,18 @@ const Home = () => {
         >
           <thead  >
             <tr>
-              <th>Id</th>
-              <th>AccountId</th>
-              <th>Name</th>
-              <th>MotherName</th>
-              <th>E-mail</th>
-              <th>Password</th>
-              <th>Contact</th>
-              <th>Year Of Graduation</th>
-              <th>Optional Upssc Aappearing Year</th>
-              <th>Is_verified</th>
-              <th>Uid</th>
-              <th>Update </th>
+              <th className="text-danger" >Id</th>
+              <th className="text-danger">AccountId</th>
+              <th className="text-danger">Name</th>
+              <th className="text-danger">MotherName</th>
+              <th className="text-danger">E-mail</th>
+              <th className="text-danger">Password</th>
+              <th className="text-danger">Contact</th>
+              <th className="text-danger">Year Of Graduation</th>
+              <th className="text-danger">Optional Upssc Aappearing Year</th>
+              <th className="text-danger">Is_verified</th>
+              <th className="text-danger">Uid</th>
+              <th className="text-danger">Update </th>
               {/* <th> Remove</th> */}
 
             </tr>
@@ -178,64 +181,64 @@ const Home = () => {
             <tr >
               <td>
                 <div className="form-control">
-                  <input name="Id" type="number" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="Id" type="number" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="accountId" type="number" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="accountId" type="number" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="name" type="text" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="name" type="text" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="motherName" type="text" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="mothername" type="text" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="email" type="email" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="email" type="email" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="password" type="password" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="password" type="password" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="contact" type="contact" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="contact" type="contact" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="year_of_graduation" type="number" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="year_of_graduation" type="text" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="optional_upssc_appearing_year" type="number" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="upse_appearing_year" type="text" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="Is_verified" type="text" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="is_verified" type=" boolean "  onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               <td>
                 <div className="form-control">
-                  <input name="uid" type="numbert" maxLength="50" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
+                  <input name="uid" type="number" onChange={(e) => { setUser({ ...user, [e.target.name]: e.target.value }) }} />
                 </div>
               </td>
               
 
 
               <td className="d-flex justify-content-center gap-3">
-                <button className="btn btn-primary" type="submit" onClick={() => handleinput()}>Add user</button>
+                <button className="btn btn-danger" type="submit" onClick={() => handleinput()}>Add user</button>
               </td>
               {/* <td>
                             <button className={`btn ${item.id ? 'btn-danger' : 'btn-secondary'}`} id="btnDelete" onClick={() => handleDelete(item)} disabled={!item.status ? true : false}>Delete</button>
